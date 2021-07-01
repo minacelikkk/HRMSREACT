@@ -1,8 +1,10 @@
 import { Table, Header, Menu, Icon } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
-import CandidateService from "../services/candidateService";
-import { Link } from "react-router-dom";
+import CandidateService from "../../services/candidateService";
+
 export default function CandidateList() {
+  const dispatch = useDispatch();
+
   const [candidates, setCandidates] = useState([]);
 
   useEffect(() => {
@@ -11,6 +13,8 @@ export default function CandidateList() {
       .getCandidates()
       .then((result) => setCandidates(result.data.data));
   }, []);
+  
+  
   return (
     <div>
       <Header as="h2">İŞ ARAYANLAR</Header>
@@ -29,10 +33,7 @@ export default function CandidateList() {
           <Table.Row>
             {candidates.map((candidate) => (
               <Table.Row key={candidate.id}>
-                <Table.Cell>
-                  <Link to={`/candidates/${candidate.firstName}`}></Link>
-                </Table.Cell>
-
+               <Table.Cell>{candidate.firstName}</Table.Cell>
                 <Table.Cell>{candidate.lastName}</Table.Cell>
                 <Table.Cell>{candidate.identityNumber}</Table.Cell>
                 <Table.Cell>{candidate.birthYear}</Table.Cell>

@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { Table, Header, Menu, Icon } from "semantic-ui-react";
-import JobTitleService from "../services/jobTitleService";
+import EmployerService from "../../services/employerService";
 import { Link } from "react-router-dom";
-export default function JobTitleList() {
-  const [jobTitles, setJobTitles] = useState([]);
+export default function EmployerList() {
+  const [employers, setEmployers] = useState([]);
 
   useEffect(() => {
-    let jobTitleService = new JobTitleService();
-    jobTitleService
-      .getJobTitles()
-      .then((result) => setJobTitles(result.data.data));
+    let employerService = new EmployerService();
+    employerService
+      .getEmployers()
+      .then((result) => setEmployers(result.data.data));
   }, []);
-
   return (
     <div>
-      <Header as="h2">İŞ POZİSYONLARI</Header>
-      <Table celled  textAlign="center" inverted>
+      <Header as="h2">İŞ VERENLER</Header>
+      <Table celled textAlign="center" inverted>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Title Id</Table.HeaderCell>
-            <Table.HeaderCell>Title </Table.HeaderCell>
+            <Table.HeaderCell>Company Name</Table.HeaderCell>
+            <Table.HeaderCell>WebAddress</Table.HeaderCell>
+            <Table.HeaderCell>Phone Number</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {jobTitles.map((jobTitle) => (
-            <Table.Row key={jobTitle.id}>
+          {employers.map((employer) => (
+            <Table.Row key={employer.id}>
               <Table.Cell>
-                <Link to={`/jobTitle/${jobTitle.title}`}></Link>
+                <Link to={`/employers/${employer.companyName}`}></Link>
               </Table.Cell>
+              <Table.Cell singleLine>{employer.webAddress}</Table.Cell>
+              <Table.Cell singleLine>{employer.phoneNumber}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

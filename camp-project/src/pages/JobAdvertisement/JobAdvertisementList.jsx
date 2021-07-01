@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Table, Header, Menu, Icon } from "semantic-ui-react";
-import JobAdvertisementService from "../services/jobAdvertisementService";
+import JobAdvertisementService from "../../services/jobAdvertisementService";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 export default function JobAdvertisementList() {
   const [jobAdvertisements, setJobAdvertisements] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let jobAdvertisementService = new JobAdvertisementService();
@@ -11,6 +14,10 @@ export default function JobAdvertisementList() {
       .getJobAdvertisements()
       .then((result) => setJobAdvertisements(result.data.data));
   }, []);
+  const handleaddToJobAdvertisement= (jobAdvertisement) => {
+    dispatch(AddToJobAdvertisement(jobAdvertisement));
+    toast.success(`${jobAdvertisement.description} iş ilanı eklendi!`)
+  };
   return (
     <div>
       
@@ -43,6 +50,9 @@ export default function JobAdvertisementList() {
                 <Table.Cell>{jobAdvertisement.applicationDeadline}</Table.Cell>
                 <Table.Cell>{jobAdvertisement.isActive}</Table.Cell>
                 <Table.Cell>{jobAdvertisement.releaseDate}</Table.Cell>
+                <Table.Cell>
+                <Button onClick={()=>handleaddToJobAdvertisement(jobAdvertisement)}>iŞ İLANI EKLE</Button>
+              </Table.Cell>
               </Table.Row>
             ))}
           </Table.Row>
