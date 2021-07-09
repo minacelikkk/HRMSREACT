@@ -14,7 +14,7 @@ export default function Dashboard() {
       <Grid>
         <Grid.Row>
           <Grid.Column width={4}>
-            <Categories />
+            <SideBar />
           </Grid.Column>
           <Grid.Column width={12}>
             <Route exact path="/" component={JobAdvertisementList}/>
