@@ -6,7 +6,6 @@ import JobAdvertisementAdd from "../pages/JobAdvertisement/JobAdvertisementAdd";
 import { ToastContainer } from "react-toastify";
 import { Grid} from "semantic-ui-react";
 import EmployerList from "../pages/Employer/EmployerList";
-import SideBar from "../layouts/SideBar";
 
 export default function Dashboard() {
   return (

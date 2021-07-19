@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Header, Menu, Icon }  from "semantic-ui-react";
+import { Table, Header, Menu, Icon } from "semantic-ui-react";
 import EmployerService from "../../services/employerService";
 import { Link } from "react-router-dom";
 export default function EmployerList() {

@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from "react";
 import { useParams } from "react-router";
-import { Button, Card, Image } from "semantic-ui-react";
+import { Button, Card, Image } from 'semantic-ui-react'
 import JobAdvertisementService from "../services/jobAdvertisementService";
 
 export default function JobAdvertisementDetail() {

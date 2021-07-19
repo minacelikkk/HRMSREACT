@@ -1,35 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Table, Header, Menu, Icon }  from "semantic-ui-react";
-import EmployerService from "../../services/employerService";
+import { Table, Header, Menu, Icon } from "semantic-ui-react";
+import JobTitleService from "../../services/jobTitleService";
 import { Link } from "react-router-dom";
-export default function EmployerList() {
-  const [employers, setEmployers] = useState([]);
+export default function JobTitleList() {
+  const [jobTitles, setJobTitles] = useState([]);
 
   useEffect(() => {
-    let employerService = new EmployerService();
-    employerService
-      .getEmployers()
-      .then((result) => setEmployers(result.data.data));
+    let jobTitleService = new JobTitleService();
+    jobTitleService
+      .getJobTitles()
+      .then((result) => setJobTitles(result.data.data));
   }, []);
+
   return (
     <div>
-      <Header as="h2">İŞ VERENLER</Header>
-      <Table celled textAlign="center" inverted>
+      <Header as="h2">İŞ POZİSYONLARI</Header>
+      <Table celled  textAlign="center" inverted>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Company Name</Table.HeaderCell>
-            <Table.HeaderCell>WebAddress</Table.HeaderCell>
-            <Table.HeaderCell>Phone Number</Table.HeaderCell>
+            <Table.HeaderCell>Title Id</Table.HeaderCell>
+            <Table.HeaderCell>Title </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {employers.map((employer) => (
-            <Table.Row key={employer.id}>
+          {jobTitles.map((jobTitle) => (
+            <Table.Row key={jobTitle.id}>
               <Table.Cell>
-                <Link to={`/employers/${employer.companyName}`}></Link>
+                <Link to={`/jobTitle/${jobTitle.title}`}></Link>
               </Table.Cell>
-              <Table.Cell singleLine>{employer.webAddress}</Table.Cell>
-              <Table.Cell singleLine>{employer.phoneNumber}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

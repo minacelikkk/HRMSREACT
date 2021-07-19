@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Table, Header, Menu, Icon,Button } from "semantic-ui-react";
+import { Table, Header, Menu, Icon } from "semantic-ui-react";
 import JobAdvertisementService from "../../services/jobAdvertisementService";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import {addToJobAdvertisement} from "../../store/actions/jobAdvertisementActions";
 export default function JobAdvertisementList() {
   const [jobAdvertisements, setJobAdvertisements] = useState([]);
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ export default function JobAdvertisementList() {
       .then((result) => setJobAdvertisements(result.data.data));
   }, []);
   const handleaddToJobAdvertisement= (jobAdvertisement) => {
-    dispatch(addToJobAdvertisement(jobAdvertisement));
+    dispatch(AddToJobAdvertisement(jobAdvertisement));
     toast.success(`${jobAdvertisement.description} iş ilanı eklendi!`)
   };
   return (

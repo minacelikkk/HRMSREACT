@@ -1,5 +1,4 @@
-import {ADD_TO_JOB_ADVERTISEMENT,REMOVE_FROM_JOB_ADVERTISEMENT}  from"../actions/jobAdvertisementActions";
-import {jobAdvertisementItems} from "../initialValues/jobAdvertisementItems";
+import jobAdvertisementItems from "../initialValues/jobAdvertisementItems"
 const initialState = {
   jobAdvertisementItems:jobAdvertisementItems,
 };
