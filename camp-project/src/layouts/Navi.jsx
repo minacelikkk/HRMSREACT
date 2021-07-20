@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Menu,Container} from "semantic-ui-react";
-import { useHistory } from "react-router";
+import { NavLink, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import SignedIn from"./SignedIn";
 import SignedOut from"./SignedOut";
@@ -20,11 +20,14 @@ export default function Navi() {
     <div>
       <Menu inverted fixed="top">
         <Container>
-          <Menu.Item name="home" />
-          <Menu.Item name="messages" />
+        <Menu.Item as={NavLink} to="/" name='HRMS'/>
+        <Menu.Item as={NavLink} to="/" name='İş Ara'/>
+        <Menu.Item as={NavLink} to="/" name='Profil'/>
+        <Menu.Item as={NavLink} to="/" name='Özgeçmişler'/>
+                    
           <Menu.Menu position="right">
               {isAuthenticated?<SignedIn signOut={handleSignOut}/>
-              :<SignedOut signIn={handleSignIn} bisey="1"/>}
+              :<SignedOut signIn={handleSignIn}/>}
           </Menu.Menu>
         </Container>
       </Menu>
