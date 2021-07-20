@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Label, Menu } from 'semantic-ui-react'
+import { Input, Menu } from 'semantic-ui-react'
 import { Container } from "semantic-ui-react";
 
 export default function SideBar() {
@@ -7,22 +7,21 @@ export default function SideBar() {
     <div>
       <Menu inverted pointing vertical  >
         <Container>
-        <Menu.Item name="inbox">
-          <Label color="teal">0</Label>
-          Inbox
+        <Menu.Item name="JobAdvertisement">
+          <a href="../pages/JobAdvertisement/JobAdvertisementList.jsx">JobAdvertisement</a>
         </Menu.Item>
 
-        <Menu.Item name="spam">
-          <Label>0</Label>
-          Spam
+        <Menu.Item name="Employer">
+          
+        <a href="../pages/Employer/EmployerList.jsx">Employer</a>
         </Menu.Item>
 
-        <Menu.Item name="updates">
-          <Label>0</Label>
-          Updates
+        <Menu.Item name="Employees">
+          
+        <a href="../pages/Employee/EmployeeList.jsx">Employee</a>
         </Menu.Item>
         <Menu.Item>
-          <Input icon="search" placeholder="Search mail..." />
+          <Input icon="JobTitle" placeholder="Search title..." />
         </Menu.Item>
         </Container>
         

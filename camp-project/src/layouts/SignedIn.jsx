@@ -5,8 +5,8 @@ export default function SignedIn({signOut}) {
     return (
         <div>
             <Menu.Item >
-                <Image avatar spaced="right" src="https://tr.wikipedia.org/wiki/Kullan%C4%B1c%C4%B1#/media/Dosya:User_icon_2.svg"/>
-                <Dropdown pointing="top left" >
+                <Image avatar spaced="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png"/>
+                <Dropdown pointing="top left" text="Giriş">
                     <Dropdown.Menu>
                         <Dropdown.Item text="My Info" icon="info" />
                         <Dropdown.Item onClick={signOut} text="Sign Out" icon="sign-out" />

@@ -4,7 +4,7 @@ import JobAdvertisementService from "../../services/jobAdvertisementService";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import {addToJobAdvertisement} from "../../store/actions/jobAdvertisementActions";
+import addToJobAdvertisement from "../../store/actions/jobAdvertisementActions";
 export default function JobAdvertisementList() {
   const [jobAdvertisements, setJobAdvertisements] = useState([]);
   const dispatch = useDispatch();

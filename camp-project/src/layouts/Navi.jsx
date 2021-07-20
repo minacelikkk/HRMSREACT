@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import { Menu,Container} from "semantic-ui-react";
-
+import { useHistory } from "react-router";
+import { useSelector } from 'react-redux';
 import SignedIn from"./SignedIn";
 import SignedOut from"./SignedOut";
+
 export default function Navi() {
+  const {jobAdvertisementItems} = useSelector(state => state.jobAdvertisement)
   const[isAuthenticated,setIsAuthenticated]=useState(true);
+  const history = useHistory()
   function handleSignOut(){
     setIsAuthenticated(false)
+    history.push("/")
   }
   function handleSignIn(){
     setIsAuthenticated(true)
@@ -18,8 +23,6 @@ export default function Navi() {
           <Menu.Item name="home" />
           <Menu.Item name="messages" />
           <Menu.Menu position="right">
-             <SignedIn/>
-              <SignedOut/>
               {isAuthenticated?<SignedIn signOut={handleSignOut}/>
               :<SignedOut signIn={handleSignIn} bisey="1"/>}
           </Menu.Menu>
